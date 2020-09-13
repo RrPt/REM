@@ -5,3 +5,5 @@ This project ist in german, to translate you can use a translator program like h
 
 Das Projekt REM erlaubt es die Leistung von vielen Kanälen gleichzeitig zu messen.
 Die Komponenten werden normalerweise in der Hausverteilung installiert.
+
+![File](file.png)
