@@ -71,9 +71,9 @@ In Entwicklung ist noch die Software und die Dokumentation.
 
 ## Bilder
 
-![REM01](pictures\REM01.jpg)
+![REM01](pictures/REM01.jpg)
 
-![REM02](pictures\REM02.jpg)
+![REM02](pictures/REM02.jpg)
 
 ## Stichwörter
  * ADE7816, Energy Metering IC
