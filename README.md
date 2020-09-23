@@ -66,7 +66,7 @@ die 3D-Modelle der Gehäuse (SCAD) zur Verfügung.
 
 ## Status
 Das Projekt ist noch in der Entwicklung (Stand September 2020), 
-allerdings sins sowohl Platinen als auch Gehäuse fertig.
+allerdings sind sowohl Platinen als auch Gehäuse fertig.
 In Entwicklung ist noch die Software und die Dokumentation.
 
 ## Bilder
@@ -82,4 +82,5 @@ In Entwicklung ist noch die Software und die Dokumentation.
  * USR ES1
  * Leistungsmessung, Blindleistungsmessung, Spannungsmessung, Strommessung, RMS
  * Stromwandler, Current transformer, ZMPT107-1, CT1005
+ * Energiemonitor
  
