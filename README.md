@@ -20,6 +20,7 @@ Der Webserver wird auch für die Konfiguration und die Kalibrierung verwendet.
 
 Die Komponenten werden normalerweise in der Hausverteilung installiert und können dann die Leistung von z.B. einzelnen Zimmern erfassen.
 
+Wine ausführliche Beschreibung ist im [Wiki](wiki/Home) zu finden.
 ## Übersicht
 Das System besteht aus mehreren Hutschinenkomponenten, die über den REM-Bus miteinander verbunden sind
 ![REM Übersicht](pictures/REM-Übersicht.jpg)
