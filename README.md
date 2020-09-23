@@ -41,12 +41,12 @@ Für die Platine des REM-C Moduls stehen die KICAD Pläne,
 die 3D-Modelle der Gehäuse (SCAD) und 
 die Controllersoftware in C++ (Arduino) zur Verfügung. 
 
-## REM-M
-### REM-MH
+## [REM-M](https://github.com/RrPt/REM/wiki/REM-M) 
+### [REM-MH](https://github.com/RrPt/REM/wiki/REM-MH) 
 Das REM-M Modul beinhaltet zum einen ein Verteilermodul REM-MH, 
 welches den REM-BUS auf die 2 REM-MM Module aufteilt.
 Auf diesem wird auch per Jumper die Adresse des REM-M Moduls eingestellt.
-### REM-MM
+### [REM-MM](https://github.com/RrPt/REM/wiki/REM-MM) 
 Jedes REM-M Modul beinhaltet 2 REM-MM Platinen, die für die eigentliche 
 Messung zuständig sind.
 An jede REM-MM Platine können 6 Stromsensoren angeschlossen werden, 
