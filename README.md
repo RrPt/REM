@@ -24,7 +24,7 @@ Die Komponenten werden normalerweise in der Hausverteilung installiert und könn
 Das System besteht aus mehreren Hutschinenkomponenten, die über den REM-Bus miteinander verbunden sind
 ![REM Übersicht](pictures/REM-Übersicht.jpg)
 
-## REM-C 
+## [REM-C](https://github.com/RrPt/REM/wiki/REM-C) 
 Das REM-C Modul enthält den Controller. Dieser fragt alle Messwerte über den 
 REM-Bus von den einzelnen REM-M Modulen ab und stellt diesen über den 
 Ethernetanschluß zur Verfügung. Die geschieht per MQTT und einen Webserver.
