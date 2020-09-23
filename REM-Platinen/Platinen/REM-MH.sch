@@ -1,0 +1,1379 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "REM-MH"
+Date "2020-07-19"
+Rev "V1.0"
+Comp "Petzoldt"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5E532E95
+P 5950 6550
+F 0 "#FLG0103" H 5950 6625 50  0001 C CNN
+F 1 "PWR_FLAG" V 5950 6900 50  0000 C CNN
+F 2 "" H 5950 6550 50  0001 C CNN
+F 3 "~" H 5950 6550 50  0001 C CNN
+	1    5950 6550
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 5E532140
+P 5700 6700
+F 0 "#FLG0102" H 5700 6775 50  0001 C CNN
+F 1 "PWR_FLAG" V 5700 7050 50  0000 C CNN
+F 2 "" H 5700 6700 50  0001 C CNN
+F 3 "~" H 5700 6700 50  0001 C CNN
+	1    5700 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0122
+U 1 1 5E52E0CD
+P 5700 6900
+F 0 "#PWR0122" H 5700 6650 50  0001 C CNN
+F 1 "GNDD" H 5704 6745 50  0000 C CNN
+F 2 "" H 5700 6900 50  0001 C CNN
+F 3 "" H 5700 6900 50  0001 C CNN
+	1    5700 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0121
+U 1 1 5E52DAF7
+P 5950 6300
+F 0 "#PWR0121" H 5950 6150 50  0001 C CNN
+F 1 "+3V3" H 5965 6473 50  0000 C CNN
+F 2 "" H 5950 6300 50  0001 C CNN
+F 3 "" H 5950 6300 50  0001 C CNN
+	1    5950 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 6900 5700 6700
+Wire Wire Line
+	5950 6300 5950 6550
+$Comp
+L power:GNDD #PWR02
+U 1 1 5EE394F5
+P 3400 6800
+F 0 "#PWR02" H 3400 6550 50  0001 C CNN
+F 1 "GNDD" H 3404 6645 50  0000 C CNN
+F 2 "" H 3400 6800 50  0001 C CNN
+F 3 "" H 3400 6800 50  0001 C CNN
+	1    3400 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR01
+U 1 1 5EE394FF
+P 3400 6400
+F 0 "#PWR01" H 3400 6250 50  0001 C CNN
+F 1 "+3V3" H 3415 6573 50  0000 C CNN
+F 2 "" H 3400 6400 50  0001 C CNN
+F 3 "" H 3400 6400 50  0001 C CNN
+	1    3400 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP_Small C7
+U 1 1 5EE4BA20
+P 3400 6600
+F 0 "C7" H 3500 6650 50  0000 L CNN
+F 1 "10u" H 3500 6550 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 3400 6600 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/KEM_C0XXX_X7R_DB-EN.pdf" H 3400 6600 50  0001 C CNN
+F 4 "TAJA475K016UNJ" H 3400 6600 50  0001 C CNN "manf#"
+F 5 "0,13" H 3400 6600 50  0001 C CNN "Preis"
+F 6 "https://www.reichelt.de/vielschicht-kerko-10-f-16v-125-c-kem-x7r1206-10u-p207163.html?" H 3400 6600 50  0001 C CNN "Reichelt"
+	1    3400 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR04
+U 1 1 5EE4D64E
+P 3900 6800
+F 0 "#PWR04" H 3900 6550 50  0001 C CNN
+F 1 "GNDD" H 3904 6645 50  0000 C CNN
+F 2 "" H 3900 6800 50  0001 C CNN
+F 3 "" H 3900 6800 50  0001 C CNN
+	1    3900 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR03
+U 1 1 5EE4D658
+P 3900 6400
+F 0 "#PWR03" H 3900 6250 50  0001 C CNN
+F 1 "+3V3" H 3915 6573 50  0000 C CNN
+F 2 "" H 3900 6400 50  0001 C CNN
+F 3 "" H 3900 6400 50  0001 C CNN
+	1    3900 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C8
+U 1 1 5EE59042
+P 3900 6600
+F 0 "C8" H 4000 6650 50  0000 L CNN
+F 1 "220n" H 4000 6550 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3900 6600 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/A900/RND_1398195_CAP_0603_X7R_ENG_TDS.pdf" H 3900 6600 50  0001 C CNN
+F 4 "GCM188R71E224KA55D" H 3900 6600 50  0001 C CNN "manf#"
+F 5 "0,02" H 3900 6600 50  0001 C CNN "Preis"
+F 6 "https://www.reichelt.de/smd-kerko-0603-220-nf-16-v-10-mlcc-rnd-150sh18b224-p225500.html" H 3900 6600 50  0001 C CNN "Reichelt"
+	1    3900 6600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 6400 3400 6500
+Wire Wire Line
+	3900 6400 3900 6500
+Wire Wire Line
+	3900 6700 3900 6800
+Wire Wire Line
+	3400 6700 3400 6800
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5ED3DC15
+P 1350 7000
+F 0 "H1" H 1450 7046 50  0000 L CNN
+F 1 "MountingHole" H 1450 6955 50  0000 L CNN
+F 2 "kicad:MountingHole_2.2mm_M2" H 1350 7000 50  0001 C CNN
+F 3 "no" H 1350 7000 50  0001 C CNN
+F 4 "not needed" H 1350 7000 50  0001 C CNN "Reichelt"
+	1    1350 7000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5ED3E008
+P 1350 7300
+F 0 "H2" H 1450 7346 50  0000 L CNN
+F 1 "MountingHole" H 1450 7255 50  0000 L CNN
+F 2 "kicad:MountingHole_2.2mm_M2" H 1350 7300 50  0001 C CNN
+F 3 "no" H 1350 7300 50  0001 C CNN
+F 4 "not needed" H 1350 7300 50  0001 C CNN "Reichelt"
+	1    1350 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0103
+U 1 1 5ECC843B
+P 8800 2100
+F 0 "#PWR0103" H 8800 1850 50  0001 C CNN
+F 1 "GNDD" H 8804 1945 50  0000 C CNN
+F 2 "" H 8800 2100 50  0001 C CNN
+F 3 "" H 8800 2100 50  0001 C CNN
+	1    8800 2100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0104
+U 1 1 5ECC8445
+P 9750 2050
+F 0 "#PWR0104" H 9750 1900 50  0001 C CNN
+F 1 "+3V3" H 9765 2223 50  0000 C CNN
+F 2 "" H 9750 2050 50  0001 C CNN
+F 3 "" H 9750 2050 50  0001 C CNN
+	1    9750 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 2200 8600 2200
+Wire Wire Line
+	9500 2200 9900 2200
+Text Label 8750 2200 0    50   ~ 0
+SCL0
+Text Label 9550 2200 0    50   ~ 0
+SDA0
+Wire Wire Line
+	9900 2300 9500 2300
+Text Label 9550 2300 0    50   ~ 0
+VP2
+Wire Wire Line
+	9750 2050 9750 2100
+Wire Wire Line
+	9750 2100 9650 2100
+Wire Wire Line
+	8800 2100 8900 2100
+Wire Wire Line
+	8700 2300 9000 2300
+Wire Wire Line
+	9000 2400 8700 2400
+Text Label 8750 2300 0    50   ~ 0
+VP1
+Text Label 8850 2400 0    50   ~ 0
+VP3
+Wire Wire Line
+	9000 3250 8700 3250
+Wire Wire Line
+	9500 3250 9750 3250
+Text Label 8750 3250 0    50   ~ 0
+SCL1
+Text Label 9550 3250 0    50   ~ 0
+SDA1
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5ECD1983
+P 2250 7000
+F 0 "H3" H 2350 7046 50  0000 L CNN
+F 1 "MountingHole" H 2350 6955 50  0000 L CNN
+F 2 "kicad:MountingHole_2.2mm_M2" H 2250 7000 50  0001 C CNN
+F 3 "no" H 2250 7000 50  0001 C CNN
+F 4 "not needed" H 2250 7000 50  0001 C CNN "Reichelt"
+	1    2250 7000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5ECD198E
+P 2250 7300
+F 0 "H4" H 2350 7346 50  0000 L CNN
+F 1 "MountingHole" H 2350 7255 50  0000 L CNN
+F 2 "kicad:MountingHole_2.2mm_M2" H 2250 7300 50  0001 C CNN
+F 3 "no" H 2250 7300 50  0001 C CNN
+F 4 "not needed" H 2250 7300 50  0001 C CNN "Reichelt"
+	1    2250 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Interface_Expansion:TCA9548APWR U1
+U 1 1 5ECD89EC
+P 5650 3300
+F 0 "U1" H 5900 4350 50  0000 C CNN
+F 1 "TCA9548APWR" H 6050 4200 50  0000 C CNN
+F 2 "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm" H 5650 2300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tca9548a.pdf" H 5700 3550 50  0001 C CNN
+F 4 "https://www.digikey.de/product-detail/de/texas-instruments/TCA9548APWR/296-34905-1-ND/3615448" H 5650 3300 50  0001 C CNN "DigiKey"
+F 5 "1,37" H 5650 3300 50  0001 C CNN "Preis"
+	1    5650 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0107
+U 1 1 5ECE2A71
+P 5650 2300
+F 0 "#PWR0107" H 5650 2150 50  0001 C CNN
+F 1 "+3V3" H 5665 2473 50  0000 C CNN
+F 2 "" H 5650 2300 50  0001 C CNN
+F 3 "" H 5650 2300 50  0001 C CNN
+	1    5650 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0108
+U 1 1 5ECE3600
+P 5650 4450
+F 0 "#PWR0108" H 5650 4200 50  0001 C CNN
+F 1 "GNDD" H 5654 4295 50  0000 C CNN
+F 2 "" H 5650 4450 50  0001 C CNN
+F 3 "" H 5650 4450 50  0001 C CNN
+	1    5650 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 4300 5650 4450
+Wire Wire Line
+	5650 2300 5650 2400
+Wire Wire Line
+	5250 2600 4750 2600
+Wire Wire Line
+	5250 2700 4750 2700
+Text Label 4900 2600 0    50   ~ 0
+SCL
+Text Label 4900 2700 0    50   ~ 0
+SDA
+Text Label 6300 2600 0    50   ~ 0
+SCL0
+Text Label 6450 2700 0    50   ~ 0
+SDA0
+Text Label 6300 2800 0    50   ~ 0
+SCL1
+Text Label 6450 2900 0    50   ~ 0
+SDA1
+$Comp
+L Device:R_Small R1
+U 1 1 5ECEBC0D
+P 6450 2350
+F 0 "R1" H 6509 2396 50  0000 L CNN
+F 1 "10k" H 6509 2305 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6450 2350 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6450 2350 50  0001 C CNN
+F 4 "0,02" H 6450 2350 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6450 2350 50  0001 C CNN "Reichelt"
+	1    6450 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R2
+U 1 1 5ECEC7C8
+P 6850 2350
+F 0 "R2" H 6909 2396 50  0000 L CNN
+F 1 "10k" H 6909 2305 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6850 2350 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6850 2350 50  0001 C CNN
+F 4 "0,02" H 6850 2350 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6850 2350 50  0001 C CNN "Reichelt"
+	1    6850 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6450 2450 6450 2600
+Wire Wire Line
+	6050 2600 6450 2600
+Wire Wire Line
+	6450 2600 7050 2600
+Connection ~ 6450 2600
+Wire Wire Line
+	6050 2700 6850 2700
+Wire Wire Line
+	6850 2450 6850 2700
+Connection ~ 6850 2700
+Wire Wire Line
+	6850 2700 7050 2700
+$Comp
+L power:+3V3 #PWR0109
+U 1 1 5ECF0959
+P 6450 2150
+F 0 "#PWR0109" H 6450 2000 50  0001 C CNN
+F 1 "+3V3" H 6465 2323 50  0000 C CNN
+F 2 "" H 6450 2150 50  0001 C CNN
+F 3 "" H 6450 2150 50  0001 C CNN
+	1    6450 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0110
+U 1 1 5ECF1475
+P 6850 2150
+F 0 "#PWR0110" H 6850 2000 50  0001 C CNN
+F 1 "+3V3" H 6865 2323 50  0000 C CNN
+F 2 "" H 6850 2150 50  0001 C CNN
+F 3 "" H 6850 2150 50  0001 C CNN
+	1    6850 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6450 2150 6450 2250
+Wire Wire Line
+	6850 2150 6850 2250
+$Comp
+L Device:R_Small R3
+U 1 1 5ECF57D9
+P 7300 2550
+F 0 "R3" H 7359 2596 50  0000 L CNN
+F 1 "10k" H 7359 2505 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7300 2550 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 7300 2550 50  0001 C CNN
+F 4 "0,02" H 7300 2550 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 7300 2550 50  0001 C CNN "Reichelt"
+	1    7300 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R4
+U 1 1 5ECF57E3
+P 7700 2550
+F 0 "R4" H 7759 2596 50  0000 L CNN
+F 1 "10k" H 7759 2505 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7700 2550 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 7700 2550 50  0001 C CNN
+F 4 "0,02" H 7700 2550 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 7700 2550 50  0001 C CNN "Reichelt"
+	1    7700 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 2650 7300 2800
+Wire Wire Line
+	7700 2650 7700 2900
+$Comp
+L power:+3V3 #PWR0111
+U 1 1 5ECF57EF
+P 7300 2350
+F 0 "#PWR0111" H 7300 2200 50  0001 C CNN
+F 1 "+3V3" H 7315 2523 50  0000 C CNN
+F 2 "" H 7300 2350 50  0001 C CNN
+F 3 "" H 7300 2350 50  0001 C CNN
+	1    7300 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0112
+U 1 1 5ECF57F9
+P 7700 2350
+F 0 "#PWR0112" H 7700 2200 50  0001 C CNN
+F 1 "+3V3" H 7715 2523 50  0000 C CNN
+F 2 "" H 7700 2350 50  0001 C CNN
+F 3 "" H 7700 2350 50  0001 C CNN
+	1    7700 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 2350 7300 2450
+Wire Wire Line
+	7700 2350 7700 2450
+Wire Wire Line
+	6050 2800 7300 2800
+Wire Wire Line
+	6050 2900 7700 2900
+Connection ~ 7700 2900
+Wire Wire Line
+	7700 2900 7850 2900
+Wire Wire Line
+	7300 2800 7850 2800
+Connection ~ 7300 2800
+$Comp
+L Device:R_Small R6
+U 1 1 5ECFC0CD
+P 5000 3400
+F 0 "R6" H 5059 3446 50  0000 L CNN
+F 1 "10k" H 5059 3355 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5000 3400 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 5000 3400 50  0001 C CNN
+F 4 "0,02" H 5000 3400 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 5000 3400 50  0001 C CNN "Reichelt"
+	1    5000 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R7
+U 1 1 5ECFCE79
+P 4750 3400
+F 0 "R7" H 4809 3446 50  0000 L CNN
+F 1 "10k" H 4809 3355 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4750 3400 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 4750 3400 50  0001 C CNN
+F 4 "0,02" H 4750 3400 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 4750 3400 50  0001 C CNN "Reichelt"
+	1    4750 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R8
+U 1 1 5ECFD2FB
+P 4450 3400
+F 0 "R8" H 4509 3446 50  0000 L CNN
+F 1 "10k" H 4509 3355 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4450 3400 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 4450 3400 50  0001 C CNN
+F 4 "0,02" H 4450 3400 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 4450 3400 50  0001 C CNN "Reichelt"
+	1    4450 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R5
+U 1 1 5ECFD486
+P 4800 3000
+F 0 "R5" H 4859 3046 50  0000 L CNN
+F 1 "10k" H 4859 2955 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4800 3000 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 4800 3000 50  0001 C CNN
+F 4 "0,02" H 4800 3000 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 4800 3000 50  0001 C CNN "Reichelt"
+	1    4800 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0113
+U 1 1 5ECFD9EF
+P 4250 3200
+F 0 "#PWR0113" H 4250 3050 50  0001 C CNN
+F 1 "+3V3" H 4265 3373 50  0000 C CNN
+F 2 "" H 4250 3200 50  0001 C CNN
+F 3 "" H 4250 3200 50  0001 C CNN
+	1    4250 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0114
+U 1 1 5ECFE188
+P 4750 4600
+F 0 "#PWR0114" H 4750 4350 50  0001 C CNN
+F 1 "GNDD" H 4754 4445 50  0000 C CNN
+F 2 "" H 4750 4600 50  0001 C CNN
+F 3 "" H 4750 4600 50  0001 C CNN
+	1    4750 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 3300 5000 3250
+Wire Wire Line
+	5000 3250 4750 3250
+Wire Wire Line
+	4250 3250 4250 3200
+Wire Wire Line
+	4450 3300 4450 3250
+Connection ~ 4450 3250
+Wire Wire Line
+	4450 3250 4250 3250
+Wire Wire Line
+	4750 3300 4750 3250
+Connection ~ 4750 3250
+Wire Wire Line
+	4750 3250 4450 3250
+Wire Wire Line
+	5250 3600 4450 3600
+Wire Wire Line
+	4450 3600 4450 3500
+Wire Wire Line
+	4750 3500 4750 3700
+Wire Wire Line
+	4750 3700 5250 3700
+Wire Wire Line
+	5000 3500 5000 3800
+Wire Wire Line
+	5000 3800 5250 3800
+Connection ~ 4750 3700
+Wire Wire Line
+	4450 3600 4450 3800
+Connection ~ 4450 3600
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J5
+U 1 1 5ED0AE64
+P 4750 4100
+F 0 "J5" V 4754 3912 50  0000 R CNN
+F 1 "Conn_02x03_Odd_Even" V 4845 3912 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 4750 4100 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/C140/RND_205-00634_DB_EN.pdf" H 4750 4100 50  0001 C CNN
+F 4 "0,03" H 4750 4100 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/rnd-stiftleiste-6-pol-rm-2-54-mm-rnd-205-00634-p208860.html?&trstct=pol_0" H 4750 4100 50  0001 C CNN "Reichelt"
+	1    4750 4100
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4750 3700 4750 3900
+Wire Wire Line
+	4850 3900 4850 3800
+Wire Wire Line
+	4850 3800 5000 3800
+Connection ~ 5000 3800
+Wire Wire Line
+	4450 3800 4650 3800
+Wire Wire Line
+	4650 3800 4650 3900
+Wire Wire Line
+	4650 4400 4650 4500
+Wire Wire Line
+	4650 4500 4750 4500
+Wire Wire Line
+	4850 4500 4850 4400
+Wire Wire Line
+	4750 4400 4750 4500
+Connection ~ 4750 4500
+Wire Wire Line
+	4750 4500 4850 4500
+Wire Wire Line
+	4750 4600 4750 4500
+$Comp
+L power:GNDD #PWR0115
+U 1 1 5ED1F98D
+P 4400 6800
+F 0 "#PWR0115" H 4400 6550 50  0001 C CNN
+F 1 "GNDD" H 4404 6645 50  0000 C CNN
+F 2 "" H 4400 6800 50  0001 C CNN
+F 3 "" H 4400 6800 50  0001 C CNN
+	1    4400 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0116
+U 1 1 5ED1F997
+P 4400 6400
+F 0 "#PWR0116" H 4400 6250 50  0001 C CNN
+F 1 "+3V3" H 4415 6573 50  0000 C CNN
+F 2 "" H 4400 6400 50  0001 C CNN
+F 3 "" H 4400 6400 50  0001 C CNN
+	1    4400 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP_Small C1
+U 1 1 5ED1F9A4
+P 4400 6600
+F 0 "C1" H 4500 6650 50  0000 L CNN
+F 1 "10u" H 4500 6550 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 4400 6600 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/KEM_C0XXX_X7R_DB-EN.pdf" H 4400 6600 50  0001 C CNN
+F 4 "TAJA475K016UNJ" H 4400 6600 50  0001 C CNN "manf#"
+F 5 "0,13" H 4400 6600 50  0001 C CNN "Preis"
+F 6 "https://www.reichelt.de/vielschicht-kerko-10-f-16v-125-c-kem-x7r1206-10u-p207163.html?" H 4400 6600 50  0001 C CNN "Reichelt"
+	1    4400 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0117
+U 1 1 5ED1F9AE
+P 4900 6800
+F 0 "#PWR0117" H 4900 6550 50  0001 C CNN
+F 1 "GNDD" H 4904 6645 50  0000 C CNN
+F 2 "" H 4900 6800 50  0001 C CNN
+F 3 "" H 4900 6800 50  0001 C CNN
+	1    4900 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0118
+U 1 1 5ED1F9B8
+P 4900 6400
+F 0 "#PWR0118" H 4900 6250 50  0001 C CNN
+F 1 "+3V3" H 4915 6573 50  0000 C CNN
+F 2 "" H 4900 6400 50  0001 C CNN
+F 3 "" H 4900 6400 50  0001 C CNN
+	1    4900 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C2
+U 1 1 5ED1F9C5
+P 4900 6600
+F 0 "C2" H 5000 6650 50  0000 L CNN
+F 1 "220n" H 5000 6550 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4900 6600 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/A900/RND_1398195_CAP_0603_X7R_ENG_TDS.pdf" H 4900 6600 50  0001 C CNN
+F 4 "GCM188R71E224KA55D" H 4900 6600 50  0001 C CNN "manf#"
+F 5 "0,02" H 4900 6600 50  0001 C CNN "Preis"
+F 6 "https://www.reichelt.de/smd-kerko-0603-220-nf-16-v-10-mlcc-rnd-150sh18b224-p225500.html" H 4900 6600 50  0001 C CNN "Reichelt"
+	1    4900 6600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 6400 4400 6500
+Wire Wire Line
+	4900 6400 4900 6500
+Wire Wire Line
+	4900 6700 4900 6800
+Wire Wire Line
+	4400 6700 4400 6800
+Wire Wire Line
+	4800 3100 5250 3100
+$Comp
+L power:+3V3 #PWR0119
+U 1 1 5ED33297
+P 4800 2900
+F 0 "#PWR0119" H 4800 2750 50  0001 C CNN
+F 1 "+3V3" H 4815 3073 50  0000 C CNN
+F 2 "" H 4800 2900 50  0001 C CNN
+F 3 "" H 4800 2900 50  0001 C CNN
+	1    4800 2900
+	1    0    0    -1  
+$EndComp
+Text Label 5050 3800 0    50   ~ 0
+A0
+Text Label 5050 3700 0    50   ~ 0
+A1
+Text Label 5050 3600 0    50   ~ 0
+A2
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J3
+U 1 1 5EE1CDFB
+P 9200 2200
+F 0 "J3" H 9250 2617 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 9250 2526 50  0000 C CNN
+F 2 "REM:PinHeader_2x05_P2.54mm_Vertical_mit_Stecker" H 9200 2200 50  0001 C CNN
+F 3 "~" H 9200 2200 50  0001 C CNN
+	1    9200 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 2000 8900 2000
+Wire Wire Line
+	8900 2000 8900 2100
+Connection ~ 8900 2100
+Wire Wire Line
+	8900 2100 9000 2100
+Wire Wire Line
+	9500 2000 9650 2000
+Wire Wire Line
+	9650 2000 9650 2100
+Connection ~ 9650 2100
+Wire Wire Line
+	9650 2100 9500 2100
+Wire Wire Line
+	9500 2400 9650 2400
+Wire Wire Line
+	9650 2400 9650 2500
+$Comp
+L power:GNDD #PWR0125
+U 1 1 5EE2D73D
+P 8800 3150
+F 0 "#PWR0125" H 8800 2900 50  0001 C CNN
+F 1 "GNDD" H 8804 2995 50  0000 C CNN
+F 2 "" H 8800 3150 50  0001 C CNN
+F 3 "" H 8800 3150 50  0001 C CNN
+	1    8800 3150
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0126
+U 1 1 5EE2D747
+P 9750 3100
+F 0 "#PWR0126" H 9750 2950 50  0001 C CNN
+F 1 "+3V3" H 9765 3273 50  0000 C CNN
+F 2 "" H 9750 3100 50  0001 C CNN
+F 3 "" H 9750 3100 50  0001 C CNN
+	1    9750 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9750 3350 9500 3350
+Text Label 9550 3350 0    50   ~ 0
+VP2
+Wire Wire Line
+	9750 3100 9750 3150
+Wire Wire Line
+	9750 3150 9650 3150
+Wire Wire Line
+	8800 3150 8900 3150
+Wire Wire Line
+	8700 3350 9000 3350
+Wire Wire Line
+	9000 3450 8700 3450
+Text Label 8750 3350 0    50   ~ 0
+VP1
+Text Label 8850 3450 0    50   ~ 0
+VP3
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J4
+U 1 1 5EE2D75E
+P 9200 3250
+F 0 "J4" H 9250 3667 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 9250 3576 50  0000 C CNN
+F 2 "REM:PinHeader_2x05_P2.54mm_Vertical_mit_Stecker" H 9200 3250 50  0001 C CNN
+F 3 "~" H 9200 3250 50  0001 C CNN
+	1    9200 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 3050 8900 3050
+Wire Wire Line
+	8900 3050 8900 3150
+Connection ~ 8900 3150
+Wire Wire Line
+	8900 3150 9000 3150
+Wire Wire Line
+	9500 3050 9650 3050
+Wire Wire Line
+	9650 3050 9650 3150
+Connection ~ 9650 3150
+Wire Wire Line
+	9650 3150 9500 3150
+Wire Wire Line
+	9500 3450 9650 3450
+Wire Wire Line
+	9650 3450 9650 3550
+$Comp
+L power:GNDD #PWR0101
+U 1 1 5EE64844
+P 1800 1350
+F 0 "#PWR0101" H 1800 1100 50  0001 C CNN
+F 1 "GNDD" H 1804 1195 50  0000 C CNN
+F 2 "" H 1800 1350 50  0001 C CNN
+F 3 "" H 1800 1350 50  0001 C CNN
+	1    1800 1350
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0102
+U 1 1 5EE6484E
+P 2750 1300
+F 0 "#PWR0102" H 2750 1150 50  0001 C CNN
+F 1 "+3V3" H 2765 1473 50  0000 C CNN
+F 2 "" H 2750 1300 50  0001 C CNN
+F 3 "" H 2750 1300 50  0001 C CNN
+	1    2750 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 1450 1600 1450
+Wire Wire Line
+	2500 1450 2900 1450
+Text Label 1750 1450 0    50   ~ 0
+SCL
+Text Label 2550 1450 0    50   ~ 0
+SDA
+Wire Wire Line
+	2900 1550 2500 1550
+Text Label 2550 1550 0    50   ~ 0
+VP2
+Wire Wire Line
+	2750 1300 2750 1350
+Wire Wire Line
+	2750 1350 2650 1350
+Wire Wire Line
+	1800 1350 1900 1350
+Wire Wire Line
+	1700 1550 2000 1550
+Wire Wire Line
+	2000 1650 1700 1650
+Text Label 1750 1550 0    50   ~ 0
+VP1
+Text Label 1850 1650 0    50   ~ 0
+VP3
+Wire Wire Line
+	2000 2500 1700 2500
+Wire Wire Line
+	2500 2500 2750 2500
+Text Label 1750 2500 0    50   ~ 0
+SCL
+Text Label 2550 2500 0    50   ~ 0
+SDA
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J1
+U 1 1 5EE64869
+P 2200 1450
+F 0 "J1" H 2250 1867 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 2250 1776 50  0000 C CNN
+F 2 "REM:PinHeader_2x05_P2.54mm_Vertical_mit_Stecker" H 2200 1450 50  0001 C CNN
+F 3 "~" H 2200 1450 50  0001 C CNN
+	1    2200 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 1250 1900 1250
+Wire Wire Line
+	1900 1250 1900 1350
+Connection ~ 1900 1350
+Wire Wire Line
+	1900 1350 2000 1350
+Wire Wire Line
+	2500 1250 2650 1250
+Wire Wire Line
+	2650 1250 2650 1350
+Connection ~ 2650 1350
+Wire Wire Line
+	2650 1350 2500 1350
+Wire Wire Line
+	2500 1650 2650 1650
+Wire Wire Line
+	2650 1650 2650 1750
+$Comp
+L power:GNDD #PWR0128
+U 1 1 5EE64887
+P 1800 2400
+F 0 "#PWR0128" H 1800 2150 50  0001 C CNN
+F 1 "GNDD" H 1804 2245 50  0000 C CNN
+F 2 "" H 1800 2400 50  0001 C CNN
+F 3 "" H 1800 2400 50  0001 C CNN
+	1    1800 2400
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0129
+U 1 1 5EE64891
+P 2750 2350
+F 0 "#PWR0129" H 2750 2200 50  0001 C CNN
+F 1 "+3V3" H 2765 2523 50  0000 C CNN
+F 2 "" H 2750 2350 50  0001 C CNN
+F 3 "" H 2750 2350 50  0001 C CNN
+	1    2750 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 2600 2500 2600
+Text Label 2550 2600 0    50   ~ 0
+VP2
+Wire Wire Line
+	2750 2350 2750 2400
+Wire Wire Line
+	2750 2400 2650 2400
+Wire Wire Line
+	1800 2400 1900 2400
+Wire Wire Line
+	1700 2600 2000 2600
+Wire Wire Line
+	2000 2700 1700 2700
+Text Label 1750 2600 0    50   ~ 0
+VP1
+Text Label 1850 2700 0    50   ~ 0
+VP3
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J2
+U 1 1 5EE648A4
+P 2200 2500
+F 0 "J2" H 2250 2917 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 2250 2826 50  0000 C CNN
+F 2 "REM:PinHeader_2x05_P2.54mm_Vertical_mit_Stecker" H 2200 2500 50  0001 C CNN
+F 3 "~" H 2200 2500 50  0001 C CNN
+	1    2200 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 2300 1900 2300
+Wire Wire Line
+	1900 2300 1900 2400
+Connection ~ 1900 2400
+Wire Wire Line
+	1900 2400 2000 2400
+Wire Wire Line
+	2500 2300 2650 2300
+Wire Wire Line
+	2650 2300 2650 2400
+Connection ~ 2650 2400
+Wire Wire Line
+	2650 2400 2500 2400
+Wire Wire Line
+	2500 2700 2650 2700
+Wire Wire Line
+	2650 2700 2650 2800
+$Comp
+L power:GNDA #PWR0105
+U 1 1 5EE9F524
+P 9650 3550
+F 0 "#PWR0105" H 9650 3300 50  0001 C CNN
+F 1 "GNDA" H 9655 3377 50  0000 C CNN
+F 2 "" H 9650 3550 50  0001 C CNN
+F 3 "" H 9650 3550 50  0001 C CNN
+	1    9650 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDA #PWR0106
+U 1 1 5EE9FC20
+P 9650 2500
+F 0 "#PWR0106" H 9650 2250 50  0001 C CNN
+F 1 "GNDA" H 9655 2327 50  0000 C CNN
+F 2 "" H 9650 2500 50  0001 C CNN
+F 3 "" H 9650 2500 50  0001 C CNN
+	1    9650 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDA #PWR0120
+U 1 1 5EE9FF43
+P 2650 2800
+F 0 "#PWR0120" H 2650 2550 50  0001 C CNN
+F 1 "GNDA" H 2655 2627 50  0000 C CNN
+F 2 "" H 2650 2800 50  0001 C CNN
+F 3 "" H 2650 2800 50  0001 C CNN
+	1    2650 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDA #PWR0123
+U 1 1 5EEA0BFA
+P 2650 1750
+F 0 "#PWR0123" H 2650 1500 50  0001 C CNN
+F 1 "GNDA" H 2655 1577 50  0000 C CNN
+F 2 "" H 2650 1750 50  0001 C CNN
+F 3 "" H 2650 1750 50  0001 C CNN
+	1    2650 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L REM:Logo L1
+U 1 1 5EE612B0
+P 1400 6450
+F 0 "L1" H 1400 6550 50  0001 C CNN
+F 1 "Logo" H 1470 6458 50  0000 L CNN
+F 2 "REM:LogoRP_6mm" H 1400 6550 50  0001 C CNN
+F 3 "" H 1400 6550 50  0001 C CNN
+	1    1400 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L REM:Logo L2
+U 1 1 5EE61B86
+P 2200 6450
+F 0 "L2" H 2200 6550 50  0001 C CNN
+F 1 "Logo" H 2270 6458 50  0000 L CNN
+F 2 "REM:LogoRP_6mm" H 2200 6550 50  0001 C CNN
+F 3 "" H 2200 6550 50  0001 C CNN
+	1    2200 6450
+	1    0    0    -1  
+$EndComp
+Text Label 6050 3000 0    50   ~ 0
+SCL2
+Text Label 6050 3100 0    50   ~ 0
+SDA2
+Wire Wire Line
+	6050 3000 6300 3000
+$Comp
+L Device:R_Small R9
+U 1 1 5EF151B1
+P 6400 3000
+F 0 "R9" V 6350 3100 50  0000 L CNN
+F 1 "10k" V 6400 2950 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3000 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3000 50  0001 C CNN
+F 4 "0,02" H 6400 3000 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3000 50  0001 C CNN "Reichelt"
+	1    6400 3000
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0124
+U 1 1 5EF15A7E
+P 6650 3000
+F 0 "#PWR0124" H 6650 2850 50  0001 C CNN
+F 1 "+3V3" V 6650 3200 50  0000 C CNN
+F 2 "" H 6650 3000 50  0001 C CNN
+F 3 "" H 6650 3000 50  0001 C CNN
+	1    6650 3000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3000 6650 3000
+Wire Wire Line
+	6050 3100 6300 3100
+$Comp
+L Device:R_Small R10
+U 1 1 5EF230F7
+P 6400 3100
+F 0 "R10" V 6350 3200 50  0000 L CNN
+F 1 "10k" V 6400 3050 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3100 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3100 50  0001 C CNN
+F 4 "0,02" H 6400 3100 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3100 50  0001 C CNN "Reichelt"
+	1    6400 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0127
+U 1 1 5EF23101
+P 6650 3100
+F 0 "#PWR0127" H 6650 2950 50  0001 C CNN
+F 1 "+3V3" V 6650 3300 50  0000 C CNN
+F 2 "" H 6650 3100 50  0001 C CNN
+F 3 "" H 6650 3100 50  0001 C CNN
+	1    6650 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3100 6650 3100
+Wire Wire Line
+	6050 3200 6300 3200
+$Comp
+L Device:R_Small R11
+U 1 1 5EF2E4E2
+P 6400 3200
+F 0 "R11" V 6350 3300 50  0000 L CNN
+F 1 "10k" V 6400 3150 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3200 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3200 50  0001 C CNN
+F 4 "0,02" H 6400 3200 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3200 50  0001 C CNN "Reichelt"
+	1    6400 3200
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0130
+U 1 1 5EF2E4EC
+P 6650 3200
+F 0 "#PWR0130" H 6650 3050 50  0001 C CNN
+F 1 "+3V3" V 6650 3400 50  0000 C CNN
+F 2 "" H 6650 3200 50  0001 C CNN
+F 3 "" H 6650 3200 50  0001 C CNN
+	1    6650 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3200 6650 3200
+Wire Wire Line
+	6050 3300 6300 3300
+$Comp
+L Device:R_Small R12
+U 1 1 5EF2E4FA
+P 6400 3300
+F 0 "R12" V 6350 3400 50  0000 L CNN
+F 1 "10k" V 6400 3250 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3300 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3300 50  0001 C CNN
+F 4 "0,02" H 6400 3300 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3300 50  0001 C CNN "Reichelt"
+	1    6400 3300
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0131
+U 1 1 5EF2E504
+P 6650 3300
+F 0 "#PWR0131" H 6650 3150 50  0001 C CNN
+F 1 "+3V3" V 6650 3500 50  0000 C CNN
+F 2 "" H 6650 3300 50  0001 C CNN
+F 3 "" H 6650 3300 50  0001 C CNN
+	1    6650 3300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3300 6650 3300
+Text Label 6050 3200 0    50   ~ 0
+SCL3
+Text Label 6050 3300 0    50   ~ 0
+SDA3
+Text Label 6050 3400 0    50   ~ 0
+SCL4
+Text Label 6050 3500 0    50   ~ 0
+SDA4
+Wire Wire Line
+	6050 3400 6300 3400
+$Comp
+L Device:R_Small R13
+U 1 1 5EF3DAA5
+P 6400 3400
+F 0 "R13" V 6350 3500 50  0000 L CNN
+F 1 "10k" V 6400 3350 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3400 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3400 50  0001 C CNN
+F 4 "0,02" H 6400 3400 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3400 50  0001 C CNN "Reichelt"
+	1    6400 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0132
+U 1 1 5EF3DAAF
+P 6650 3400
+F 0 "#PWR0132" H 6650 3250 50  0001 C CNN
+F 1 "+3V3" V 6650 3600 50  0000 C CNN
+F 2 "" H 6650 3400 50  0001 C CNN
+F 3 "" H 6650 3400 50  0001 C CNN
+	1    6650 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3400 6650 3400
+Wire Wire Line
+	6050 3500 6300 3500
+$Comp
+L Device:R_Small R14
+U 1 1 5EF3DABD
+P 6400 3500
+F 0 "R14" V 6350 3600 50  0000 L CNN
+F 1 "10k" V 6400 3450 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3500 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3500 50  0001 C CNN
+F 4 "0,02" H 6400 3500 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3500 50  0001 C CNN "Reichelt"
+	1    6400 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0133
+U 1 1 5EF3DAC7
+P 6650 3500
+F 0 "#PWR0133" H 6650 3350 50  0001 C CNN
+F 1 "+3V3" V 6650 3700 50  0000 C CNN
+F 2 "" H 6650 3500 50  0001 C CNN
+F 3 "" H 6650 3500 50  0001 C CNN
+	1    6650 3500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3500 6650 3500
+Wire Wire Line
+	6050 3600 6300 3600
+$Comp
+L Device:R_Small R15
+U 1 1 5EF3DAD5
+P 6400 3600
+F 0 "R15" V 6350 3700 50  0000 L CNN
+F 1 "10k" V 6400 3550 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3600 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3600 50  0001 C CNN
+F 4 "0,02" H 6400 3600 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3600 50  0001 C CNN "Reichelt"
+	1    6400 3600
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0134
+U 1 1 5EF3DADF
+P 6650 3600
+F 0 "#PWR0134" H 6650 3450 50  0001 C CNN
+F 1 "+3V3" V 6650 3800 50  0000 C CNN
+F 2 "" H 6650 3600 50  0001 C CNN
+F 3 "" H 6650 3600 50  0001 C CNN
+	1    6650 3600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3600 6650 3600
+Wire Wire Line
+	6050 3700 6300 3700
+$Comp
+L Device:R_Small R16
+U 1 1 5EF3DAED
+P 6400 3700
+F 0 "R16" V 6350 3800 50  0000 L CNN
+F 1 "10k" V 6400 3650 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3700 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3700 50  0001 C CNN
+F 4 "0,02" H 6400 3700 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3700 50  0001 C CNN "Reichelt"
+	1    6400 3700
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0135
+U 1 1 5EF3DAF7
+P 6650 3700
+F 0 "#PWR0135" H 6650 3550 50  0001 C CNN
+F 1 "+3V3" V 6650 3900 50  0000 C CNN
+F 2 "" H 6650 3700 50  0001 C CNN
+F 3 "" H 6650 3700 50  0001 C CNN
+	1    6650 3700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3700 6650 3700
+Text Label 6050 3600 0    50   ~ 0
+SCL5
+Text Label 6050 3700 0    50   ~ 0
+SDA5
+Text Label 6050 3800 0    50   ~ 0
+SCL6
+Text Label 6050 3900 0    50   ~ 0
+SDA6
+Wire Wire Line
+	6050 3800 6300 3800
+$Comp
+L Device:R_Small R17
+U 1 1 5EF4E946
+P 6400 3800
+F 0 "R17" V 6350 3900 50  0000 L CNN
+F 1 "10k" V 6400 3750 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3800 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3800 50  0001 C CNN
+F 4 "0,02" H 6400 3800 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3800 50  0001 C CNN "Reichelt"
+	1    6400 3800
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0136
+U 1 1 5EF4E950
+P 6650 3800
+F 0 "#PWR0136" H 6650 3650 50  0001 C CNN
+F 1 "+3V3" V 6650 4000 50  0000 C CNN
+F 2 "" H 6650 3800 50  0001 C CNN
+F 3 "" H 6650 3800 50  0001 C CNN
+	1    6650 3800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3800 6650 3800
+Wire Wire Line
+	6050 3900 6300 3900
+$Comp
+L Device:R_Small R18
+U 1 1 5EF4E95E
+P 6400 3900
+F 0 "R18" V 6350 4000 50  0000 L CNN
+F 1 "10k" V 6400 3850 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 3900 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 3900 50  0001 C CNN
+F 4 "0,02" H 6400 3900 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 3900 50  0001 C CNN "Reichelt"
+	1    6400 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0137
+U 1 1 5EF4E968
+P 6650 3900
+F 0 "#PWR0137" H 6650 3750 50  0001 C CNN
+F 1 "+3V3" V 6650 4100 50  0000 C CNN
+F 2 "" H 6650 3900 50  0001 C CNN
+F 3 "" H 6650 3900 50  0001 C CNN
+	1    6650 3900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3900 6650 3900
+Wire Wire Line
+	6050 4000 6300 4000
+$Comp
+L Device:R_Small R19
+U 1 1 5EF4E976
+P 6400 4000
+F 0 "R19" V 6350 4100 50  0000 L CNN
+F 1 "10k" V 6400 3950 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 4000 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 4000 50  0001 C CNN
+F 4 "0,02" H 6400 4000 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 4000 50  0001 C CNN "Reichelt"
+	1    6400 4000
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0138
+U 1 1 5EF4E980
+P 6650 4000
+F 0 "#PWR0138" H 6650 3850 50  0001 C CNN
+F 1 "+3V3" V 6650 4200 50  0000 C CNN
+F 2 "" H 6650 4000 50  0001 C CNN
+F 3 "" H 6650 4000 50  0001 C CNN
+	1    6650 4000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 4000 6650 4000
+Wire Wire Line
+	6050 4100 6300 4100
+$Comp
+L Device:R_Small R20
+U 1 1 5EF4E98E
+P 6400 4100
+F 0 "R20" V 6350 4200 50  0000 L CNN
+F 1 "10k" V 6400 4050 39  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6400 4100 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/B300/RND_SMD_0603_RESISTOR_2017.pdf" H 6400 4100 50  0001 C CNN
+F 4 "0,02" H 6400 4100 50  0001 C CNN "Preis"
+F 5 "https://www.reichelt.de/smd-widerstand-0603-10-kohm-100-mw-1-vis-crcw060310k-p238029.html" H 6400 4100 50  0001 C CNN "Reichelt"
+	1    6400 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0139
+U 1 1 5EF4E998
+P 6650 4100
+F 0 "#PWR0139" H 6650 3950 50  0001 C CNN
+F 1 "+3V3" V 6650 4300 50  0000 C CNN
+F 2 "" H 6650 4100 50  0001 C CNN
+F 3 "" H 6650 4100 50  0001 C CNN
+	1    6650 4100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 4100 6650 4100
+Text Label 6050 4000 0    50   ~ 0
+SCL7
+Text Label 6050 4100 0    50   ~ 0
+SDA7
+$Comp
+L power:GNDA #PWR0140
+U 1 1 5F147E84
+P 5450 6850
+F 0 "#PWR0140" H 5450 6600 50  0001 C CNN
+F 1 "GNDA" H 5455 6677 50  0000 C CNN
+F 2 "" H 5450 6850 50  0001 C CNN
+F 3 "" H 5450 6850 50  0001 C CNN
+	1    5450 6850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5F148D00
+P 5450 6700
+F 0 "#FLG0101" H 5450 6775 50  0001 C CNN
+F 1 "PWR_FLAG" V 5450 7050 50  0000 C CNN
+F 2 "" H 5450 6700 50  0001 C CNN
+F 3 "~" H 5450 6700 50  0001 C CNN
+	1    5450 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 6700 5450 6850
+$EndSCHEMATC

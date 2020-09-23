@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name Converter_ACDC)(type KiCad)(uri ${KISYSMOD}/Converter_ACDC.pretty)(options "")(descr ""))
+  (lib (name REM)(type KiCad)(uri ${KIPRJMOD}/modules/REM.pretty)(options "")(descr ""))
+)

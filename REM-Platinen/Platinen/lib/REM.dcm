@@ -1,0 +1,55 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AC-DC-Wandler
+D Compact AC/DC board mount power module 3W 5V
+K AC/DC module power supply
+F http://www.hlktech.net/product_detail.php?ProId=54
+$ENDCMP
+#
+$CMP ADE7816ACPZ
+D Six Current Channels, One Voltage Channel,Energy Metering IC
+K Energiemessung
+F https://www.analog.com/media/en/technical-documentation/data-sheets/ADE7816.pdf
+$ENDCMP
+#
+$CMP Conn_02x04_Odd_Even-1
+D Generic connector, double row, 02x04, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Lolin32
+D ESP32 Microcontroller-Board Lolin32
+K ESP32
+F D:\Daten\Petzoldt\Rainer\Entwicklung\Dokumentation\Bauteiledokumentation\uController\ESP32\esp32_technical_reference_manual_en.pdf
+$ENDCMP
+#
+$CMP MCP23008-xSO
+D 8-Bit I/O Expander with I2C Interface
+F http://ww1.microchip.com/downloads/en/DeviceDoc/MCP23008-MCP23S08-Data-Sheet-20001919F.pdf
+$ENDCMP
+#
+$CMP Micro-Button2
+D Push button switch, generic, two pins
+K switch normally-open pushbutton push-button
+F ~
+$ENDCMP
+#
+$CMP Micro-Button3
+D Push button switch, generic, two pins
+K switch normally-open pushbutton push-button
+F ~
+$ENDCMP
+#
+$CMP USR-ES1
+D W5500-Breakout
+K Ethernet SPI Adapter
+F D:\Daten\Petzoldt\Rainer\Entwicklung\Dokumentation\Bauteiledokumentation\Adapter\USR-ES1-EN-V1.0.pdf
+$ENDCMP
+#
+$CMP ZMCT10x
+D Spannungssensor
+F D:\Daten\Petzoldt\Rainer\Entwicklung\Dokumentation\Bauteiledokumentation\Stromwandler\ZMPT107.jpg
+$ENDCMP
+#
+#End Doc Library
