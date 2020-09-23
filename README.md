@@ -25,7 +25,7 @@ Wine ausführliche Beschreibung ist im [Wiki](../../wiki/Home) zu finden.
 Das System besteht aus mehreren Hutschinenkomponenten, die über den REM-Bus miteinander verbunden sind
 ![REM Übersicht](pictures/REM-Übersicht.jpg)
 
-## [REM-C](https://github.com/RrPt/REM/wiki/REM-C) 
+## [REM-C](../../wiki/REM-C) 
 Das REM-C Modul enthält den Controller. Dieser fragt alle Messwerte über den 
 REM-Bus von den einzelnen REM-M Modulen ab und stellt diesen über den 
 Ethernetanschluß zur Verfügung. Die geschieht per MQTT und einen Webserver.
@@ -42,12 +42,12 @@ Für die Platine des REM-C Moduls stehen die KICAD Pläne,
 die 3D-Modelle der Gehäuse (SCAD) und 
 die Controllersoftware in C++ (Arduino) zur Verfügung. 
 
-## [REM-M](https://github.com/RrPt/REM/wiki/REM-M) 
+## [REM-M](../../wiki/REM-M) 
 ### [REM-MH](https://github.com/RrPt/REM/wiki/REM-MH) 
 Das REM-M Modul beinhaltet zum einen ein Verteilermodul REM-MH, 
 welches den REM-BUS auf die 2 REM-MM Module aufteilt.
 Auf diesem wird auch per Jumper die Adresse des REM-M Moduls eingestellt.
-### [REM-MM](https://github.com/RrPt/REM/wiki/REM-MM) 
+### [REM-MM](../../wiki/REM-MM) 
 Jedes REM-M Modul beinhaltet 2 REM-MM Platinen, die für die eigentliche 
 Messung zuständig sind.
 An jede REM-MM Platine können 6 Stromsensoren angeschlossen werden, 
