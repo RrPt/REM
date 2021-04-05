@@ -1,0 +1,15 @@
+{
+  "Filename": "/RemPara.json",
+  "mqttMask": "REM0/<REMMM>",
+  "mqttMaskChan": "REM0/<REMMM>/<CHAN>",
+  "useMqtt": true,
+  "defaultIp": "192.168.22.250",
+  "mqttClientName": "RemClient0",
+  "minRemmModules": 1,
+  "mqttIP": "192.168.22.100",
+  "mqttUser": "<user>",
+  "mqttPassword": "<pw>",
+  "maxMqttSendDelay": 60000,
+  "wifi_ssid": "<ssid>",
+  "wifi_password": "<pw>"
+}

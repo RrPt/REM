@@ -1,0 +1,4 @@
+# ADE7816Test1 build property overrides
+#
+network.port=3232
+

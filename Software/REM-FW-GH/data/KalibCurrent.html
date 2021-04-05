@@ -1,0 +1,230 @@
+﻿<html>
+<head>
+  <title>REM Rainers Energy Measurement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>       
+  <script src="templateHandler.js"></script>
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="no-skin">
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="https://github.com/RrPt/REM/wiki"><img width="18%" src="medvislogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Messung</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/KalibCurrent">Kalib-Strom</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibVoltage">Kalib-Spannung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPhase">Kalib-Phase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPower">Kalib-Leistung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibPowerReactive">Kalib-Blindleistung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Parameter">SetPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllVParameter">ShowVPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllCParameter">ShowCPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Files">Dateien</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>   
+
+<div class="" style="padding: 60px 0 0;"><!-- Spacing between navbar and content-->
+
+    <main role="main" class="container">
+
+        <h1 class="d-flex justify-content-center">Kalibrierung Strom</h1>
+        <div id="time" style="float:right;">Zeit</div>
+        <br>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Modul &nbsp;</td>
+                    <td>Kanal&nbsp;</td>
+                    <td>Gain<br><input type="text" size="5" id="currentGain" /></td>
+                    <td>Offset<br><input type="text" size="5" id="currentOffset" /></td>
+                    <td>Strom raw&nbsp;</td>
+                    <td>Strom&nbsp;[A]<br><input type="text" size="5" id="currentSoll" /></td>
+                </tr>
+            </thead>
+            <template id="headerTemplate">
+                <tr>
+                    <td id="moduleNum">-</td>
+                    <td id="channelNum"></td>
+                    <td id="channelIGainIst">
+                        <button class="btn btn-info" id="SetGainPerModuleButton" title="Gain manuell setzen">Set Gain</button>
+                    </td>
+                    <td id="channelIOffsetIst">
+                        <button class="btn btn-info" id="SetOffsetPerModuleButton" title="Offset manuell setzen">Set Offset</button>
+                    </td>
+                    <td id="channelCurentRaw">
+                        <button class="btn btn-info" id="KalibOffsetPerModuleButton" title="Strom von 0mA anlegen, dann hier drücken">KalibOffset</button>
+                    </td>
+                    <td id="action">
+                        <button class="btn btn-info" id="KalibGainPerModuleButton" title="aktuellen Strom oben eintragen, dann hier drücken">KalibGain</button>
+                    </td>
+                </tr>
+            </template>
+            <template id="rowTemplate">
+                <tr>
+                    <td id="moduleNum"></td>
+                    <td id="channelNum">-</td>
+                    <td id="channelIGainIst">--</td>
+                    <td id="channelIOffsetIst">--</td>
+                    <td id="channelCurentRaw">--</td>
+                    <td id="channelCurent">--</td>
+                </tr>
+            </template>
+            <tbody id="tableContent"></tbody>
+        </table>
+
+        <br>
+        <button class="btn btn-info" id="button">Aktualisieren</button>
+        <button class="btn btn-info" id="ParaToFlashButton">All Para to Flash</button>
+
+
+
+
+    </main>
+
+
+<footer style=" position: relative; bottom: 0;  width: 100%; height: 30px;  line-height: 30px; background-color: #f5f5f5;">
+    
+       <center> <span class="text-muted">&copy;Petzoldt 2020</span></center>
+ 
+</footer>
+
+<script>
+//var host = "http://192.168.22.136";
+var host = "";
+$(document).ready(function(){
+ 	updateModuleValues();
+	setInterval(updateModuleValues,1000);	
+});
+
+
+$('#button').click(function() { //refreshButton
+		updateModuleValues();
+});
+
+$('#ParaToFlashButton').click(function() { //ParaToFlashbutton
+jQuery.get(host+'/api/ParaToFlash',function(data){})
+});
+
+
+
+$(document).on("click",'#KalibGainPerModuleButton', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let currentSollValue = $('#currentSoll').val();
+		
+		jQuery.get(host+`/api/KalibCurrent?kalibBef=1&module=${moduleIndex}&sollValue=${currentSollValue}`,function(data){
+		updateModuleValues();
+					
+		});
+  });
+
+$(document).on("click",'#KalibOffsetPerModuleButton', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let currentSollValue = 0;
+		
+		jQuery.get(host+`/api/KalibCurrent?kalibBef=2&module=${moduleIndex}&sollValue=${currentSollValue}`,function(data){		
+		updateModuleValues();
+			
+		});
+		
+  });
+
+$(document).on("click",'#SetGainPerModuleButton', function () { //SetGainPerModuleButton
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let currentSollValue = $('#currentGain').val();
+		
+		jQuery.get(host+`/api/KalibCurrent?kalibBef=3&module=${moduleIndex}&sollValue=${currentSollValue}`,function(data){		
+		updateModuleValues();
+			
+		});
+		
+  });
+
+$(document).on("click",'#SetOffsetPerModuleButton', function () { //SetOffsetPerModuleButton
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let currentSollValue = $('#currentOffset').val();
+		
+		jQuery.get(host+`/api/KalibCurrent?kalibBef=4&module=${moduleIndex}&sollValue=${currentSollValue}`,function(data){		
+		updateModuleValues();
+			
+		});
+		
+  });
+
+
+function updateModuleValues(){
+jQuery.get(host+'/api/KalibData',function(data){   
+  let modules = data.modules;
+    $('#time').text(data.time);
+  $('#tableContent').empty();
+  Object.keys(modules).forEach((key,index)=>{
+  
+  let remModule = modules[key];
+  
+  let headerTemplateHandler = new TemplateHandler('#headerTemplate');  
+  headerTemplateHandler.setTemplateField('#moduleNum',key);
+  
+  let x = $(headerTemplateHandler.templateContent).find('#KalibGainPerModuleButton')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  x = $(headerTemplateHandler.templateContent).find('#KalibOffsetPerModuleButton')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  x = $(headerTemplateHandler.templateContent).find('#SetGainPerModuleButton')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  x = $(headerTemplateHandler.templateContent).find('#SetOffsetPerModuleButton')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  
+  $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+  
+  remModule.channels.forEach((d,i)=>{
+  let templateHandler = new TemplateHandler('#rowTemplate');  
+	templateHandler.setTemplateField('#channelNum',d.channel);
+	templateHandler.setTemplateField('#channelIGainIst',d.ixGAIN);
+	templateHandler.setTemplateField('#channelIOffsetIst',d.ixRMSOS);
+	templateHandler.setTemplateField('#channelCurent',d.current);
+	templateHandler.setTemplateField('#channelCurentRaw',d.currentRaw);
+  $('#tableContent').append(templateHandler.getTemplate().html());
+  });
+ });
+});
+}
+
+  
+
+</script>
+
+
+</body>
+</html>

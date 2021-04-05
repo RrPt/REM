@@ -1,0 +1,177 @@
+﻿<html>
+<head>
+  <title>REM Rainers Energy Measurement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>       
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="no-skin">
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top  bg-dark">
+        <a class="navbar-brand" href="https://github.com/RrPt/REM/wiki"><img width="18%" src="medvislogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Messung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibCurrent">Kalib-Strom</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibVoltage">Kalib-Spannung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPhase">Kalib-Phase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPower">Kalib-Leistung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibPowerReactive">Kalib-Blindleistung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Parameter">SetPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllVParameter">ShowVPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllCParameter">ShowCPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Files">Dateien</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>   
+
+<div class="" style="padding: 60px 0 0;"><!-- Spacing between navbar and content-->
+
+    <main role="main" class="container">
+
+        <h1 class="d-flex justify-content-center">REM Befehle</h1>
+        <span id="startTime" style="float;">StartZeit</span>
+        <span id="time" style="float:right;">Zeit</span>
+        <br>
+        <p></p>
+        <table class="table">
+            <tr>
+                <th width=10>
+                    Button
+                </th>
+                <th>
+                    Beschreibung
+                </th>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-info" id="buttonRescan">Rescan for Rem-MM</button>
+                </td>
+                <td>
+                    REM-Bus nach Rem-MM Modulen scannen
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-info" id="buttonResetMM">Reset All Rem-MM</button>
+                </td>
+                <td>
+                    Alle Rem-MM Module neu starten
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-info" id="buttonHardResetMM">Hard-Reset All Rem-MM</button>
+                </td>
+                <td>
+                    Alle Rem-MM Module werden aus und wieder eingeschaltet (Spannung aus/ein)
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-info" id="buttonResetC">Reset REM-C</button>
+                </td>
+                <td>
+                    REM-C neu starten
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-info" id="buttonSaveCounter">Save Counter</button>
+                </td>
+                <td>
+                    Energiezähler sichern (Spiffs)
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <form method="post" enctype="multipart/form-data">
+                        <input class="btn btn-info" type="submit" value="Upload">
+                        <input type="file" name="name">
+                    </form>
+                </td>
+                <td>
+                    Datei in SPIFFs hochladen
+                </td>
+                <td>
+            </tr>
+        </table>
+
+</main>
+
+
+<script>
+//var host = "http://192.168.22.131";
+var host = "";
+$(document).ready(function(){
+ 	updateModuleValues();
+	setInterval(updateModuleValues,1000);
+});
+
+    $('#buttonRescan').click(function () {
+        jQuery.get(host + `/api/command/Rescan`, function (data) { });
+    });
+
+    $('#buttonResetMM').click(function () {
+        jQuery.get(host + `/api/command/ResetMM`, function (data) { });
+    });
+
+    $('#buttonHardResetMM').click(function () {
+        jQuery.get(host + `/api/command/HardResetMM`, function (data) { });
+    });
+
+    $('#buttonResetC').click(function () {
+        jQuery.get(host + `/api/command/ResetC`, function (data) { });
+    });
+
+    $('#buttonSaveCounter').click(function () {
+        jQuery.get(host + `/api/command/SaveCounter`, function (data) { });
+    });
+
+
+function updateModuleValues(){
+jQuery.get(host+'/api/time',function(data){  
+    let modules = data.modules;
+    $('#time').text(data.time);
+    $('#startTime').text("Startzeit: "+data.startTime);
+});
+}
+
+</script>
+
+</body>
+</html>

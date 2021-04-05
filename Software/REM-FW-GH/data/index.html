@@ -1,0 +1,195 @@
+﻿<html>
+<head>
+  <title>REM Rainers Energy Measurement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>       
+  <script src="templateHandler.js"></script>
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="no-skin">
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top  bg-dark">
+        <a class="navbar-brand" href="https://github.com/RrPt/REM/wiki"><img width="18%" src="medvislogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Messung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibCurrent">Kalib-Strom</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibVoltage">Kalib-Spannung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPhase">Kalib-Phase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPower">Kalib-Leistung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibPowerReactive">Kalib-Blindleistung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Parameter">SetPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllVParameter">ShowVPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllCParameter">ShowCPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Files">Dateien</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>   
+
+<div class="" style="padding: 60px 0 0;"><!-- Spacing between navbar and content-->
+
+<main role="main" class="container">
+
+<h1 class="d-flex justify-content-center">REM Messdaten</h1>
+    <span id="startTime" style="float;" >StartZeit</span>
+    <span id="time" style="float:right;" >Zeit</span>
+<br>
+
+
+
+<table class="table">
+	 <thead>
+         <tr>
+             <td>Modul &nbsp;</td>
+             <td>Anz Msg/<br>Kanal&nbsp;</td>
+             <td><br>Name&nbsp;</td>
+             <td>Spannung/<br>Strom&nbsp;</td>
+             <td>Frequenz/<br>Leistung&nbsp;</td>
+             <td><br>Blindleistung&nbsp;</td>
+             <td><br>Energie</td>
+             <td><br>Blindenergie</td>
+             <td><br>Energiereset</td>
+         </tr>
+	</thead>
+	<template id="headerTemplate">
+        <tr>
+            <td id="moduleNum"></td>
+            <td id="NumberOfMeasures">-</td>
+            <td id="free1">-</td>
+            <td id="channelVoltage">-</td>
+            <td id="channelFrequency">-</td>
+            <td id="free4">-</td>
+            <td id="free5">-</td>
+            <td id="free6">-</td>
+            <td id="free7">-</td>
+        </tr>
+	</template>
+	<template id="rowTemplate">
+        <tr>
+            <td id="moduleNum"></td>
+            <td id="channelNum">-</td>
+            <td id="channelName">?</td>
+            <td id="channelAmps">-</td>
+            <td id="channelPower">-</td>
+            <td id="channelPowerReactive">-</td>
+            <td id="channelEnergie">-</td>
+            <td id="channelBlindenergie">-</td>
+            <td id="channelEnergiereset">
+                <span id="Energiereset"> Resetzeitpunkt </span>&nbsp;
+                <button class="btn btn-info" id="setActionId" title="Energie auf 0 setzen">Zurücksetzen</button>
+            </td>
+        </tr>
+	</template>
+<tbody id="tableContent">
+</tbody>
+</table>
+
+<br>
+<button class="btn btn-info" id="button" >Aktualisieren</button>
+
+
+
+
+</main>
+
+
+<!--footer style=" position: absolute; bottom: 0;  width: 100%; height: 30px;  line-height: 30px; background-color: #f5f5f5;">
+    
+       <center> <span class="text-muted">&copy;2020</span></center>
+ 
+</footer-->
+
+<script>
+//var host = "http://192.168.22.118";
+var host = "";
+$(document).ready(function(){
+ 	updateModuleValues();
+	setInterval(updateModuleValues,1000);
+});
+
+$('#button').click(function() {
+		updateModuleValues();
+});
+
+$(document).on("click",'#setActionId', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let channelNo = $(this).attr("data-channelIndex");
+		
+		jQuery.get(host+`/api/modules?Bef=1&module=${moduleIndex}&chan=${channelNo}`,function(data){
+		updateModuleValues();
+					
+		});
+  });
+
+function updateModuleValues(){
+jQuery.get(host+'/api/modules',function(data){   //http://192.168.22.135
+    let modules = data.modules;
+    $('#time').text(data.time);
+    $('#startTime').text("Startzeit: "+data.startTime);
+  $('#tableContent').empty();
+  Object.keys(modules).forEach((key,index)=>{
+  	let remModule = modules[key];
+	let headerTemplateHandler = new TemplateHandler('#headerTemplate');  
+	  headerTemplateHandler.setTemplateField('#moduleNum',key);
+	  headerTemplateHandler.setTemplateField('#NumberOfMeasures', "#"+remModule.noOfMeasurements);
+	  headerTemplateHandler.setTemplateField('#channelVoltage', remModule.voltage+" V");
+	  headerTemplateHandler.setTemplateField('#channelFrequency', remModule.freq+" Hz");
+      $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+	
+    remModule.channels.forEach((d,i)=>{
+		let templateHandler = new TemplateHandler('#rowTemplate');
+
+  	    let x = $(templateHandler.templateContent).find('#setActionId')[0];
+        $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+        $(x).attr("data-channelIndex",d.channel);//set index of module as button data attribute 
+
+
+        templateHandler.setTemplateField('#channelNum', d.channel);
+        templateHandler.setTemplateField('#channelName', d.desc);
+		templateHandler.setTemplateField('#channelPower',d.power+" W");
+		templateHandler.setTemplateField('#channelPowerReactive',d.powerreactive+" VA");
+		templateHandler.setTemplateField('#channelAmps',d.amps+ " A");
+        templateHandler.setTemplateField('#channelEnergie', d.energy+ " kWh");
+        templateHandler.setTemplateField('#channelBlindenergie', d.energyreactive+" kVAh");
+        templateHandler.setTemplateField('#Energiereset', d.energyStartTime);
+		$('#tableContent').append(templateHandler.getTemplate().html());
+  });
+ });
+});
+}
+
+    
+
+</script>
+
+
+</body>
+</html>

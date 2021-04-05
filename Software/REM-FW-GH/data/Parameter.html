@@ -1,0 +1,252 @@
+﻿<html>
+<head>
+  <title>REM Rainers Energy Measurement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>       
+  <script src="templateHandler.js"></script>
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="no-skin">
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="https://github.com/RrPt/REM/wiki"><img width="18%" src="medvislogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">Messung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibCurrent">Kalib-Strom</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibVoltage">Kalib-Spannung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPhase">Kalib-Phase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPower">Kalib-Leistung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibPowerReactive">Kalib-Blindleistung</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Parameter">SetPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllVParameter">ShowVPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllCParameter">ShowCPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Files">Dateien</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>   
+
+<div class="" style="padding: 60px 0 0;"><!-- Spacing between navbar and content-->
+
+    <main role="main" class="container">
+
+        <h1 class="d-flex justify-content-center">Parameter</h1>
+        <div id="time" style="float:right;">Zeit</div>
+        <br>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Modul &nbsp;</td>
+                    <td>Kanal&nbsp;</td>
+                    <td>Name</td>
+                    <td>Wert<br><input type="text" size="5" id="sollValueId" /></td>
+                    <td>Aktion&nbsp;</td>
+                </tr>
+            </thead>
+            <template id="headerTemplate">
+                <tr>
+                    <td id="moduleNum">-</td>
+                    <td id="channelNum"></td>
+                    <td id="nameId">name</td>
+                    <td id="wertId">-</td>
+                    <td id="actionId">
+                        <button class="btn btn-info" id="setActionId" title="obigen wert setzen">Setzen</button>
+                    </td>
+                </tr>
+            </template>
+            <template id="rowTemplate">
+                <tr>
+                    <td id="moduleNum"></td>
+                    <td id="channelNum">-</td>
+                    <td id="nameId">name</td>
+                    <td id="wertId">-</td>
+                    <td id="actionId">
+                        <button class="btn btn-info" id="setAction2Id" title="obigen wert setzen">Setzen2</button>
+                    </td>
+                </tr>
+            </template>
+            <tbody id="tableContent"></tbody>
+        </table>
+
+        <br>
+        <button class="btn btn-info" id="button">Aktualisieren</button>
+        <button class="btn btn-info" id="ParaToFlashButton">All Para to Flash</button>
+
+
+
+
+    </main>
+
+
+<footer style=" position: relative; bottom: 0;  width: 100%; height: 30px;  line-height: 30px; background-color: #f5f5f5;">
+    
+       <center> <span class="text-muted">&copy;Petzoldt 2020</span></center>
+ 
+</footer>
+
+<script>
+//var host = "http://192.168.22.136";
+var host = "";
+$(document).ready(function(){
+ 	updateModuleValues();
+	setInterval(updateModuleValues,1000);	
+});
+
+
+$('#button').click(function() { //refreshButton
+		updateModuleValues();
+});
+
+$('#ParaToFlashButton').click(function() { //ParaToFlashbutton
+jQuery.get(host+'/api/ParaToFlash',function(data){})
+});
+
+
+
+$(document).on("click",'#setActionId', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let channelNo = $(this).attr("data-channelIndex");
+		let currentSollValue = $('#sollValueId').val();
+		let paraname = $(this).attr("data-paraname");
+		
+		jQuery.get(host+`/api/SetParameter?Bef=1&Para=${paraname}&module=${moduleIndex}&chan=${channelNo}&sollValue=${currentSollValue}`,function(data){
+		updateModuleValues();
+					
+		});
+  });
+
+
+$(document).on("click",'#setAction2Id', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let channelNo = $(this).attr("data-channelIndex");
+		let currentSollValue = $('#sollValueId').val();
+		let paraname = $(this).attr("data-paraname");
+		
+		jQuery.get(host+`/api/SetParameter?Bef=2&Para=${paraname}&module=${moduleIndex}&chan=${channelNo}&sollValue=${currentSollValue}`,function(data){
+		updateModuleValues();
+					
+		});
+  });
+
+
+function updateModuleValues(){
+jQuery.get(host+'/api/Parameter',function(data){   
+  let modules = data.modules;
+    $('#time').text(data.time);
+ $('#tableContent').empty();
+  Object.keys(modules).forEach((key,index)=>{
+  
+  let remModule = modules[key];
+  
+  let headerTemplateHandler = new TemplateHandler('#headerTemplate');  
+  
+  let x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  $(x).attr("data-channelIndex",-1);//set index of module as button data attribute 
+
+ 
+  
+  headerTemplateHandler.setTemplateField('#moduleNum',key);
+    headerTemplateHandler.setTemplateField('#channelNum','all');
+    headerTemplateHandler.setTemplateField('#nameId','lineCyc');
+    headerTemplateHandler.setTemplateField('#wertId',remModule.lineCyc);
+    x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+    $(x).attr("data-paraname",'lineCyc');//set as button data attribute 
+    $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+  
+    headerTemplateHandler.setTemplateField('#moduleNum', '');
+    headerTemplateHandler.setTemplateField('#channelNum', 'all');
+    headerTemplateHandler.setTemplateField('#nameId', 'Gain');
+    headerTemplateHandler.setTemplateField('#wertId', remModule.Gain);
+    x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+    $(x).attr("data-paraname", 'Gain');//set  as button data attribute 
+
+    $('#tableContent').append(headerTemplateHandler.getTemplate().html()); headerTemplateHandler.setTemplateField('#moduleNum', '');
+    headerTemplateHandler.setTemplateField('#channelNum', 'all');
+    headerTemplateHandler.setTemplateField('#nameId', 'APNOLOAD');
+    headerTemplateHandler.setTemplateField('#wertId', remModule.APNOLOAD);
+    x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+    $(x).attr("data-paraname", 'APNOLOAD');//set  as button data attribute 
+    $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+
+    headerTemplateHandler.setTemplateField('#moduleNum','');
+    headerTemplateHandler.setTemplateField('#channelNum','all');
+    headerTemplateHandler.setTemplateField('#nameId','VARNOLOAD');
+    headerTemplateHandler.setTemplateField('#wertId',remModule.VARNOLOAD);
+    x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+    $(x).attr("data-paraname",'VARNOLOAD');//set as button data attribute 
+    $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+  
+    headerTemplateHandler.setTemplateField('#moduleNum','');
+    headerTemplateHandler.setTemplateField('#channelNum','all');
+    headerTemplateHandler.setTemplateField('#nameId','OILVL');
+    headerTemplateHandler.setTemplateField('#wertId',remModule.OILVL);
+    x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+    $(x).attr("data-paraname",'OILVL');//set as button data attribute 
+    $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+  
+    headerTemplateHandler.setTemplateField('#moduleNum','');
+    headerTemplateHandler.setTemplateField('#channelNum','all');
+    headerTemplateHandler.setTemplateField('#nameId','OVLVL');
+    headerTemplateHandler.setTemplateField('#wertId',remModule.OVLVL);
+    x = $(headerTemplateHandler.templateContent).find('#setActionId')[0];
+    $(x).attr("data-paraname",'OVLVL');//set  as button data attribute 
+    $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+  
+  
+  remModule.channels.forEach((d,i)=>{
+	let templateHandler = new TemplateHandler('#rowTemplate');  
+  
+    x = $(templateHandler.templateContent).find('#setAction2Id')[0];
+    $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+    $(x).attr("data-channelIndex",i);//set index of module as button data attribute 
+    $(x).attr("data-paraname",'PCF_COEFF');//set index of module as button data attribute 
+
+  
+	templateHandler.setTemplateField('#channelNum',d.channel);
+    templateHandler.setTemplateField('#nameId','PCF_COEFF');
+    templateHandler.setTemplateField('#wertId',d.PCF_COEFF);
+  $('#tableContent').append(templateHandler.getTemplate().html());
+  });
+ });
+});
+}
+
+  
+
+</script>
+
+
+</body>
+</html>

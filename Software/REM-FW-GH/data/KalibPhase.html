@@ -1,0 +1,261 @@
+﻿<html>
+<head>
+  <title>REM Rainers Energy Measurement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>       
+  <script src="templateHandler.js"></script>
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="no-skin">
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="https://github.com/RrPt/REM/wiki"><img width="18%" src="medvislogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Messung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibCurrent">Kalib-Strom</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibVoltage">Kalib-Spannung</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/KalibPhase">Kalib-Phase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPower">Kalib-Leistung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibPowerReactive">Kalib-Blindleistung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Parameter">SetPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllVParameter">ShowVPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllCParameter">ShowCPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Files">Dateien</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>   
+
+<div class="" style="padding: 60px 0 0;"><!-- Spacing between navbar and content-->
+
+    <main role="main" class="container">
+
+        <h1 class="d-flex justify-content-center">Kalibrierung Phase</h1>
+        <div id="time" style="float:right;">Zeit</div>
+        <br>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Modul &nbsp;</td>
+                    <td>Kanal&nbsp;</td>
+                    <td>PCF_Coeff<br><input type="text" size="5" id="pcfCoeff" /></td>
+                    <td>Leistung&nbsp;[W]</td>
+                    <td>Blindleistung&nbsp;[VA]</td>
+                    <td>Fehler&nbsp;[°]</td>
+                    <td>PCF neu &nbsp;<br>phi_Ist=<input type="text" size="5" id="phi" />°</td>
+                </tr>
+            </thead>
+            <template id="headerTemplate">
+                <tr>
+                    <td id="moduleNum">-</td>
+                    <td id="channelNum"></td>
+                    <td id="channelPCF">
+                        <button class="btn btn-info" id="SetPcfPerModuleButton" title="PCF_Coeff manuell setzen">Set PCF_Coeff</button>
+                    </td>
+                    <td id="channelPower"></td>
+                    <td id="channelPowerRective"></td>
+                    <td id="channelError"></td>
+                    <td id="PcfNew">
+                        <button class="btn btn-info" id="KalibPCFPerModuleButton" title="aktuelle Phasenverschuiebung oben eintragen, dann hier drücken">KalibPhase</button>
+                    </td>
+                    <td id="pcf"></td>
+                </tr>
+            </template>
+            <template id="rowTemplate">
+                <tr>
+                    <td id="moduleNum"></td>
+                    <td id="channelNum">-</td>
+                    <td id="channelPCF1"> <p id="channelPCF">ppp</p><p id="channelPCFWinkel">ppp</p></td>
+                    <td id="channelPower">--</td>
+                    <td id="channelPowerReactive">--</td>
+                    <td id="Error">kein phi_Ist<br>angegeben</td>
+                    <td id="PCFSoll">kein phi_Ist<br>angegeben</td>
+                </tr>
+            </template>
+            <tbody id="tableContent"></tbody>
+        </table>
+
+        <br>
+        <button class="btn btn-info" id="button">Aktualisieren</button>
+        <button class="btn btn-info" id="ParaToFlashButton">All Para to Flash</button>
+
+
+
+
+    </main>
+
+
+<footer style=" position: relative; bottom: 0;  width: 100%; height: 30px;  line-height: 30px; background-color: #f5f5f5;">
+    
+       <center> <span class="text-muted">&copy;Petzoldt 2020</span></center>
+ 
+</footer>
+
+<script>
+//var host = "http://192.168.22.136";
+var host = "";
+$(document).ready(function(){
+ 	updateModuleValues();
+	setInterval(updateModuleValues,1000);	
+});
+
+
+$('#button').click(function() { //refreshButton
+		updateModuleValues();
+});
+
+$('#ParaToFlashButton').click(function() { //ParaToFlashbutton
+jQuery.get(host+'/api/ParaToFlash',function(data){})
+});
+
+
+
+$(document).on("click",'#SetPcfPerModuleButton', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let pcfSollValue = $('#pcfCoeff').val();
+		
+		jQuery.get(host+`/api/KalibPhase?kalibBef=1&module=${moduleIndex}&sollValue=${pcfSollValue}`,function(data){
+		updateModuleValues();
+					
+		});
+  });
+
+$(document).on("click",'#KalibPCFPerModuleButton', function () { 
+		let moduleIndex = $(this).attr("data-moduleIndex");
+		let pcfSollValue =   $('#phi').val();
+		
+		jQuery.get(host+`/api/KalibPhase?kalibBef=2&module=${moduleIndex}&sollValue=${pcfSollValue}`,function(data){
+		updateModuleValues();
+					
+		});
+  });
+
+
+function updateModuleValues(){
+jQuery.get(host+'/api/KalibData',function(data){   
+  let modules = data.modules;
+    $('#time').text(data.time);
+$('#tableContent').empty();
+  Object.keys(modules).forEach((key,index)=>{
+  
+  let remModule = modules[key];
+  
+  let headerTemplateHandler = new TemplateHandler('#headerTemplate');  
+  headerTemplateHandler.setTemplateField('#moduleNum',key);
+  
+  let x = $(headerTemplateHandler.templateContent).find('#SetPcfPerModuleButton')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  x = $(headerTemplateHandler.templateContent).find('#KalibPCFPerModuleButton')[0];
+  $(x).attr("data-moduleIndex",index);//set index of module as button data attribute 
+  
+  $('#tableContent').append(headerTemplateHandler.getTemplate().html());
+  
+  remModule.channels.forEach((d,i)=>{
+    let templateHandler = new TemplateHandler('#rowTemplate');  
+	let istKorrWinkel = Math.round(calcPCF2Winkel( d.PCF_COEFF)*1000)/1000;
+	templateHandler.setTemplateField('#channelNum',d.channel);
+	templateHandler.setTemplateField('#channelPCF',d.PCF_COEFF);
+	templateHandler.setTemplateField('#channelPCFWinkel', istKorrWinkel +"°");
+	templateHandler.setTemplateField('#channelPower',d.powerActive);
+	templateHandler.setTemplateField('#channelPowerReactive',d.powerReactive);
+	templateHandler.setTemplateField('#channelPowerRaw',d.powerActiveRaw);
+	if ($('#phi').val().length!=0)
+	{
+        let theta = calcPhaseErr($('#phi').val(), d.powerActive, d.powerReactive);
+        if (isNaN(theta)) {
+            templateHandler.setTemplateField('#Error', 'kein Verbraucher angeschlossen');
+            templateHandler.setTemplateField('#PCFSoll', 'kein Verbraucher angeschlossen');
+        }
+        else {
+            templateHandler.setTemplateField('#Error', Math.round(theta * 1000) / 1000);
+            let pcfNew = Math.round(calcWinkel2PCF(theta + istKorrWinkel));
+            templateHandler.setTemplateField('#PCFSoll', pcfNew);
+        }
+	}
+  $('#tableContent').append(templateHandler.getTemplate().html());
+  });
+ });
+});
+}
+
+function calcPhaseErr(winkel,p,b){
+ let phi = winkel / 180 * 3.1415;
+ let t = (p*Math.sin(phi)-b*Math.cos(phi))/(b*Math.sin(phi)+p*Math.cos(phi));
+ let erg = Math.atan(t) * 180 / 3.1415;
+ return erg;
+}  
+
+function calcWinkel2PCF(winkel){
+ let theta = winkel / 180 * 3.1415;
+ let w = 314.15 / 8000;
+ let pcf_frac = (Math.sin(theta+3*w)-Math.sin(w))/(Math.sin(theta+4*w));
+ let pcf = (1<<23) * pcf_frac;
+ if (pcf<0) pcf += (1<<28);
+ return pcf;
+}  
+
+function calcWinkel2PCF2(winkel){
+ let theta = winkel / 180 * 3.1415;
+ let w = 314.15 / 8000;
+ let pcf_frac = (Math.sin(theta+3*w)-Math.sin(w))/(Math.sin(theta+4*w));
+ let pcf = (1<<23) * pcf_frac;
+ return pcf;
+}  
+
+
+
+function calcPCF2Winkel(pcf){
+ let pcf1 = pcf;
+ if (pcf>100000000) pcf1 -= (1<<28);
+ let wu = -6;
+ let wo = 6;
+ let w = 0;
+ let pm = 0;
+ while (wo-wu>0.0001) {
+   w = (wo+wu)/2;
+   pm = calcWinkel2PCF2(w);
+   if (pcf1>pm) wu = w;
+   else wo = w;    
+   //console.log(w + " -- " + pm + " -> " + pcf1 );
+ }
+ return wo ;
+}  
+
+
+</script>
+
+
+</body>
+</html>

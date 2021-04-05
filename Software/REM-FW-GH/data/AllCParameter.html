@@ -1,0 +1,150 @@
+﻿<html>
+<head>
+  <title>REM Rainers Energy Measurement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>       
+  <script src="templateHandler.js"></script>
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="no-skin">
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="https://github.com/RrPt/REM/wiki"><img width="18%" src="medvislogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Messung</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/KalibCurrent">Kalib-Strom</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibVoltage">Kalib-Spannung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPhase">Kalib-Phase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/KalibPower">Kalib-Leistung</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/KalibPowerReactive">Kalib-Blindleistung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Parameter">SetPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AllVParameter">ShowVPara</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/AllCParameter">ShowCPara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Files">Dateien</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>   
+
+<div class="" style="padding: 60px 0 0;"><!-- Spacing between navbar and content-->
+
+    <main role="main" class="container">
+
+        <h1 class="d-flex justify-content-center">Alle Kanalparameter</h1>
+        <div id="time" style="float:right;">Zeit</div>
+        <br>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Modul &nbsp;</td>
+                    <td>Kanal&nbsp;</td>
+                    <td>IGain<br></td>
+                    <td>IOffset<br></td>
+                    <td>wGain&nbsp;</td>
+                    <td>wOffset&nbsp;</td>
+                    <td>varGain&nbsp;</td>
+                    <td>varOffset&nbsp;</td>
+                    <td>PCF_Coeff&nbsp;</td>
+                </tr>
+            </thead>
+
+            <template id="rowTemplate">
+                <tr>
+                    <td id="moduleNum"></td>
+                    <td id="channelNum">-</td>
+                    <td id="channelIGainIst">--</td>
+                    <td id="channelIOffsetIst">--</td>
+                    <td id="channelWGain">--</td>
+                    <td id="channelWRmsos">--</td>
+                    <td id="channelVarGain">--</td>
+                    <td id="channelVarOs">--</td>
+                    <td id="channelPcfCoeff">--</td>
+                </tr>
+            </template>
+            <tbody id="tableContent"></tbody>
+        </table>
+
+        <br>
+
+
+
+
+    </main>
+
+
+<footer style=" position: relative; bottom: 0;  width: 100%; height: 30px;  line-height: 30px; background-color: #f5f5f5;">
+    
+       <center> <span class="text-muted">&copy;Petzoldt 2020</span></center>
+ 
+</footer>
+
+<script>
+//var host = "http://192.168.22.136";
+var host = "";
+$(document).ready(function(){
+ 	updateModuleValues();
+	setInterval(updateModuleValues,1000);	
+});
+
+
+function updateModuleValues(){
+jQuery.get(host+'/api/KalibData',function(data){   
+    let modules = data.modules;
+    $('#time').text(data.time);
+
+  $('#tableContent').empty();
+  Object.keys(modules).forEach((key,index)=>{
+  
+  let remModule = modules[key];
+  
+  remModule.channels.forEach((d,i)=>{
+  let templateHandler = new TemplateHandler('#rowTemplate');  
+    templateHandler.setTemplateField('#moduleNum', key);
+	templateHandler.setTemplateField('#channelNum',d.channel);
+	templateHandler.setTemplateField('#channelIGainIst',d.ixGAIN);
+	templateHandler.setTemplateField('#channelIOffsetIst',d.ixRMSOS);
+    templateHandler.setTemplateField('#channelWGain',d.wGAIN);
+    templateHandler.setTemplateField('#channelWRmsos',d.wRMSOS);
+    templateHandler.setTemplateField('#channelVarGain', d.varGAIN);
+    templateHandler.setTemplateField('#channelVarOs', d.varOS);
+    templateHandler.setTemplateField('#channelPcfCoeff', d.PCF_COEFF);
+  $('#tableContent').append(templateHandler.getTemplate().html());
+  });
+ });
+});
+}
+
+</script>
+</body>
+</html>

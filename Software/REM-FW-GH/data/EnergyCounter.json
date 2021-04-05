@@ -1,0 +1,214 @@
+{
+  "Filename": "/EnergyCounter.json",
+  "time": "27.02.2021 09:48:11",
+  "modules": {
+    "REMMM700": {
+      "0": {
+        "EnergyActive": 1.863524e7,
+        "EnergyResetDate": 1613513446
+      },
+      "1": {
+        "EnergyActive": 2643668,
+        "EnergyResetDate": 1613513446
+      },
+      "2": {
+        "EnergyActive": 140859,
+        "EnergyResetDate": 1613513446
+      },
+      "3": {
+        "EnergyActive": 2.480281e7,
+        "EnergyResetDate": 1613513446
+      },
+      "4": {
+        "EnergyActive": 241751.5,
+        "EnergyResetDate": 1613513446
+      },
+      "5": {
+        "EnergyActive": 205378.5,
+        "EnergyResetDate": 1613513446
+      }
+    },
+    "REMMM701": {
+      "0": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513446
+      },
+      "1": {
+        "EnergyActive": 33446,
+        "EnergyResetDate": 1613513446
+      },
+      "2": {
+        "EnergyActive": 534243,
+        "EnergyResetDate": 1613513446
+      },
+      "3": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513446
+      },
+      "4": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513446
+      },
+      "5": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513446
+      }
+    },
+    "REMMM710": {
+      "0": {
+        "EnergyActive": 3.74464e7,
+        "EnergyResetDate": 1613513446
+      },
+      "1": {
+        "EnergyActive": 2.528437e7,
+        "EnergyResetDate": 1613513446
+      },
+      "2": {
+        "EnergyActive": 3.688565e7,
+        "EnergyResetDate": 1613513446
+      },
+      "3": {
+        "EnergyActive": 1.983852e7,
+        "EnergyResetDate": 1613513446
+      },
+      "4": {
+        "EnergyActive": 1.587646e7,
+        "EnergyResetDate": 1613513446
+      },
+      "5": {
+        "EnergyActive": 2.455814e7,
+        "EnergyResetDate": 1613513446
+      }
+    },
+    "REMMM711": {
+      "0": {
+        "EnergyActive": 4.933946e7,
+        "EnergyResetDate": 1613513446
+      },
+      "1": {
+        "EnergyActive": 86178,
+        "EnergyResetDate": 1613513446
+      },
+      "2": {
+        "EnergyActive": 5192397,
+        "EnergyResetDate": 1613513446
+      },
+      "3": {
+        "EnergyActive": 2.502959e7,
+        "EnergyResetDate": 1613513446
+      },
+      "4": {
+        "EnergyActive": 9728925,
+        "EnergyResetDate": 1613513446
+      },
+      "5": {
+        "EnergyActive": -4.718788e8,
+        "EnergyResetDate": 1613513446
+      }
+    },
+    "REMMM720": {
+      "0": {
+        "EnergyActive": 8994470,
+        "EnergyResetDate": 1613513446
+      },
+      "1": {
+        "EnergyActive": 1460446,
+        "EnergyResetDate": 1613513446
+      },
+      "2": {
+        "EnergyActive": 2248301,
+        "EnergyResetDate": 1613513446
+      },
+      "3": {
+        "EnergyActive": 1642899,
+        "EnergyResetDate": 1613513446
+      },
+      "4": {
+        "EnergyActive": 78915.5,
+        "EnergyResetDate": 1613513447
+      },
+      "5": {
+        "EnergyActive": 208266,
+        "EnergyResetDate": 1613513447
+      }
+    },
+    "REMMM721": {
+      "0": {
+        "EnergyActive": 2.023172e7,
+        "EnergyResetDate": 1613513447
+      },
+      "1": {
+        "EnergyActive": 310827.5,
+        "EnergyResetDate": 1613513447
+      },
+      "2": {
+        "EnergyActive": 1.105287e7,
+        "EnergyResetDate": 1613513447
+      },
+      "3": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "4": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "5": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      }
+    },
+    "REMMM730": {
+      "0": {
+        "EnergyActive": 6676496,
+        "EnergyResetDate": 1613513447
+      },
+      "1": {
+        "EnergyActive": 475,
+        "EnergyResetDate": 1613513447
+      },
+      "2": {
+        "EnergyActive": 1819550,
+        "EnergyResetDate": 1613513447
+      },
+      "3": {
+        "EnergyActive": 4131114,
+        "EnergyResetDate": 1613513447
+      },
+      "4": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "5": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      }
+    },
+    "REMMM731": {
+      "0": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "1": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "2": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "3": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "4": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      },
+      "5": {
+        "EnergyActive": 0,
+        "EnergyResetDate": 1613513447
+      }
+    }
+  }
+}
