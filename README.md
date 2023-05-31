@@ -66,7 +66,7 @@ Für die Platinen des REM-M Moduls stehen die KICAD Pläne und
 die 3D-Modelle der Gehäuse (SCAD) zur Verfügung. 
 
 ## Status
-Das Projekt ist fgestellt und bei mir seit Anfang 2021 ununterbrochen ohne Probleme im Betrieb.
+Das Projekt ist fertiggestellt und bei mir seit Anfang 2021 ununterbrochen ohne Probleme im Betrieb.
 
 ## Bilder
 
